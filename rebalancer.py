@@ -1,5 +1,7 @@
 # Rebalancer.py
 
+# Given current and target allocations, lists all changes required to re-balance a portfolio.
+
 # To do:
 # * Modularize, with default args for current, target, and adjustments?
 # * Group data, halve array count
