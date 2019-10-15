@@ -2,13 +2,12 @@
 
 # To do:
 # * Modularize, with default args for current, target, and adjustments?
-# * Group things as structs to halve the array count
+# * Group data, halve array count
 # * isValidAmount -> isValidFloat(s, max)
 # * isValidSymbol -> isValidSymbol(s, max_length)
 
 
 import csv
-
 
 MAX_ALLOCATION = 200000  # Max amount allocated to any one security
 
@@ -21,14 +20,14 @@ adjustment_syms = []
 adjustment_vals = []
 
 
-def csval(v):
-    return '{:,.0f}'.format(v)
-
-
 def myAssert(shouldBeTrue, errorMsg):
     if not shouldBeTrue:
         print errorMsg
         exit()
+
+        
+def csval(v):
+    return '{:,.0f}'.format(v)
 
 
 def isValidSymbol(s):
@@ -100,8 +99,8 @@ with open('target.csv') as targets_file:
     i = 0
     for row in csv_reader:
         # Ignore first (header) row.
-        # This also avoids the annoyance that MS Excel csv-utf8 format seems to
-        # encode the first character wrong (!)
+        # This also avoids the annoyance that MS Excel csv-utf8 format reserves
+        # the first character to express file format.
         if i != 0:
             sym = row[0].strip()
             pc = row[1].strip().rstrip('%%')
